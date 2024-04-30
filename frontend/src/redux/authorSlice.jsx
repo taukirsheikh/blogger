@@ -27,3 +27,5 @@ const authorSlice= createSlice({
        
     }
 })
+export default authorSlice
+export const {login, logout,fetchBlogList}=authorSlice.actions

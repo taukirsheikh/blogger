@@ -5,7 +5,10 @@ from api.models import User, Blog
 from api.serializers import UserSerializer, UserLoginSerializer
 
 # Create your views here.
-class UserList(generics.ListCreateAPIView):
+class UserList(generics.ListAPIView):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+class UserRegister(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 

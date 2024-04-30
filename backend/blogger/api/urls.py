@@ -3,7 +3,7 @@ from .views.userView import UserLogin, UserRegister, UserList
 from .views.blogView import BlogList, BlogPost, SingleBlogView, BlogListByAuthor, BlogUpdate
 
 urlpatterns = [
-    path('user/', UserList.as_view(), name='user-login'),
+    path('user/', UserList.as_view(), name='user-list'),
     path('user/login/', UserLogin.as_view(), name='user-login'),
     path('user/register/', UserRegister.as_view(), name='user-register'),
     path('blog/', BlogList.as_view(), name='BlogList'),

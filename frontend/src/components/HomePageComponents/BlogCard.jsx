@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom"; 
 
 function BlogCard({blog_id, title, date, content}) {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+}
  
   return (
     <div>
@@ -14,6 +19,7 @@ function BlogCard({blog_id, title, date, content}) {
       <button className="btn btn-primary">Read</button>
       </Link>
     </div>
+    <p>{formatDate(date)}</p>
   </div>
 </div>
     </div>

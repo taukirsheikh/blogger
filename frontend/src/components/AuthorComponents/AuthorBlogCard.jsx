@@ -12,7 +12,7 @@ function AuthorBlogCard({title,content,date,blog_id}) {
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
           <p className="truncate">{content}</p>
-          <p>Created At: {formatDate(date)}</p>
+          <p>{formatDate(date)}</p>
           <div className="card-actions justify-end">
             
               <button className="btn btn-primary">Edit</button>

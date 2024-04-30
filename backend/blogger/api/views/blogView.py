@@ -10,7 +10,7 @@ class BlogList(generics.ListAPIView):
 #singe blog view
 class SingleBlogView(generics.RetrieveAPIView):
     queryset = Blog.objects.all()
-    serializer_class = BlogPostSerializer
+    serializer_class = BlogSerializer
 
 #CRUD portion
 class BlogPost(generics.CreateAPIView):

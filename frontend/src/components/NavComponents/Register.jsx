@@ -20,23 +20,25 @@ function Register() {
             type="text"
             placeholder="your name"
             className="input input-bordered input-sm w-full max-w-xs"
+            required
           />
           <h6 className="font-bold text-md">Email</h6>
           <input
-            type="text"
-            placeholder="hero@fmail.com"
+            type="email"
+            placeholder="hero@gmail.com"
             className="input input-bordered input-sm w-full max-w-xs"
+            required
           />
           <h6 className="font-bold text-md">Password</h6>
           <input
             type="text"
             placeholder="#######"
             className="input input-bordered input-sm w-full max-w-xs"
+            required
           />
           <div className="modal-action">
             <button className="btn btn-primary">Register</button>
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn">Close</button>
             </form>
           </div>

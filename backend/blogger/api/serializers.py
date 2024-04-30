@@ -11,5 +11,19 @@ class UserSerializer(serializers.ModelSerializer):
         
 class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
-        model=User
+        model = User
         fields=['email','password']
+
+
+class BlogSerializer(serializers.ModelSerializer):
+    author=UserSerializer()
+    class Meta:
+        model= Blog
+        fields='__all__'
+        
+
+class BlogPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Blog
+        fields=['id','title','content','created_at','author']
+        read_only_fields = ['author']

@@ -16,7 +16,12 @@ class UserLoginSerializer(serializers.ModelSerializer):
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    author=UserSerializer()
+    # author=UserSerializer(exclude=['id'])
+    class AuthorSerializer(serializers.ModelSerializer):
+        class Meta:
+            model=User
+            fields=['name','email']
+    author=AuthorSerializer()
     class Meta:
         model= Blog
         fields='__all__'

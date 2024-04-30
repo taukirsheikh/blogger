@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"; 
+import LogIn from "./NavComponents/LogIn";
+import Register from "./NavComponents/Register";
 
 
 const NavBar = () => {
@@ -9,8 +11,11 @@ const NavBar = () => {
 <Link to="/">
         <span className="btn btn-ghost text-xl">Blogger</span>
 </Link>
-        <button className="btn  btn-outline">Log In</button>
-        <button className="btn">Sign Up</button>
+<div className="flex absolute right-10 gap-2">
+
+        <LogIn/>
+        <Register/>
+</div>
       </div>
      
     </>

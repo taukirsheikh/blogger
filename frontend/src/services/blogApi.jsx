@@ -12,6 +12,7 @@ export default async function BlogList() {
     }
 }
 
+// fetch post done by author
 export const fetchPostsByAuthor = async (authorId) => {
     try {
       
@@ -25,5 +26,23 @@ export const fetchPostsByAuthor = async (authorId) => {
       throw error; 
     }
   };
+
+//delete single post done by author
+
+export const deleteBlogPost = async (postId) => {
+  try {
+    
+    const response = await axios.delete(`http://127.0.0.1:8000/blog/update-single/${postId}/`);
+    
+    
+    return response.data;
+  } catch (error) {
+    
+    console.error("Error deleting blog post:", error);
+    throw error; 
+  }
+};
+
+
   
   

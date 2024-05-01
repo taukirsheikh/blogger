@@ -21,7 +21,7 @@ const NavBar = () => {
         <div className="flex absolute right-10 gap-2">
           {isLoggedIn ? (
             <>
-             <Link to='author-dashboard'>
+             <Link to='/author-dashboard'>
 
              <button className="btn btn-primary">Dashboard</button>
              </Link> 

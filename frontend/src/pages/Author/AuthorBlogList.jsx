@@ -8,6 +8,8 @@ function AuthorBlogList() {
   const authorId = useSelector((state) => state.user.author.id);
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [delet, setDelet] = useState(false)
+  console.log(delet)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,7 +25,7 @@ function AuthorBlogList() {
     };
 
     fetchData(); 
-  }, [authorId]); 
+  }, [authorId,delet]); 
   return (
     <>
     {isLoading ?(
@@ -37,6 +39,8 @@ function AuthorBlogList() {
           title={blog.title}
           date={blog.created_at}
           content={blog.content}
+          setDelet={setDelet}
+          delet={delet}
         />
       ))}
     </div>

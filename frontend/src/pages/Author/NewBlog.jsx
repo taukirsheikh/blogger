@@ -23,6 +23,7 @@ function NewBlog() {
       setContent(" Post Successful");
     } catch (error) {
       console.error("Error posting:", error);
+      setContent("missing values")
     }
   };
 
@@ -36,6 +37,7 @@ function NewBlog() {
           className="input input-bordered w-full max-w-2xl"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <p className="font-bold">Content</p>
         <textarea
@@ -43,6 +45,7 @@ function NewBlog() {
           placeholder="Your thoughts"
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          required
         ></textarea>
         <button className="btn btn-primary w-[10rem]" onClick={handlePost}>
           Post

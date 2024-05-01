@@ -16,10 +16,10 @@ function BlogCard({blog_id, title, date, content}) {
     <p className='truncate'>{content}</p>
     <div className="card-actions justify-end">
       <Link to={`blog-details/${blog_id}`}>
-      <button className="btn btn-primary">Read</button>
+      <button className="btn btn-primary absolute right-4">Read</button>
       </Link>
     </div>
-    <p>{formatDate(date)}</p>
+    <span>{formatDate(date)}</span>
   </div>
 </div>
     </div>

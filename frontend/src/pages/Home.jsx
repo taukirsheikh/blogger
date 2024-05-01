@@ -11,6 +11,7 @@ function Home() {
 const [blogList,setBlogList] =useState([])
 const [isLoading, setIsLoading] = useState(true);
 const { blog_id } = useParams();
+console.log(blog_id,'params')
 
 useEffect(() => {
     let mounted = true;
@@ -18,7 +19,8 @@ useEffect(() => {
         try {
           const resp = await BlogList();
           if (mounted) {
-            setBlogList(resp.data);
+            const sortedBlogList = resp.data.sort((a, b) => b.id - a.id);
+            setBlogList(sortedBlogList);
             console.log('homedata',blogList);
             setIsLoading(false);
           }
@@ -42,7 +44,6 @@ useEffect(() => {
     <div>
 
      <NavBar/>
-     {/* <Outlet/> */}
      {blog_id?(
         <Outlet/>
     ):(

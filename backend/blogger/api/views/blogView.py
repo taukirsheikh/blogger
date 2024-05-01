@@ -32,3 +32,10 @@ class BlogUpdate(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=BlogPostSerializer
 
 
+class BlogDetete(generics.DestroyAPIView):
+    queryset=Blog.objects.all()
+    serializer_class=BlogPostSerializer
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response({"message": "Blog post deleted successfully"}, status=200)

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views.userView import UserLogin, UserRegister, UserList
-from .views.blogView import BlogList, BlogPost, SingleBlogView, BlogListByAuthor, BlogUpdate
+from .views.blogView import BlogList, BlogPost, SingleBlogView, BlogListByAuthor, BlogUpdate, BlogDetete
 
 urlpatterns = [
     path('user/', UserList.as_view(), name='user-list'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('single-blog/<int:pk>/', SingleBlogView.as_view(), name='single_blog_view'),
     path('blog/post/', BlogPost.as_view(), name='Blog post add by author'),
     path('blog/by-author/<int:author_id>/', BlogListByAuthor.as_view(), name='blog_list_by_author'),
-    path('blog/update-single/<int:pk>/', BlogUpdate.as_view(), name='blog_list_by_author'),
+    path('blog/update-single/<int:pk>/', BlogUpdate.as_view(), name='blog_upade'),
+    path('blog/delete-single/<int:pk>/', BlogDetete.as_view(), name='blog_delete'),
     
 ]

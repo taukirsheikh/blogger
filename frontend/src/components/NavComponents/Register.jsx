@@ -59,6 +59,7 @@ function Register() {
             className="input input-bordered input-sm w-full max-w-xs"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            minLength="2"
             required
           />
           <h6 className="font-bold text-md">Password</h6>
@@ -68,6 +69,7 @@ function Register() {
             className="input input-bordered input-sm w-full max-w-xs"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            minLength="2"
             required
           />
           <div className="modal-action">
@@ -84,7 +86,7 @@ function Register() {
               Close
             </button>
           </div>
-          {state ? <p>User Registered successfully</p> : <p>error occured</p>}
+          {state ? <p>User Registered successfully</p> :null}
         </div>
       </dialog>
     </div>

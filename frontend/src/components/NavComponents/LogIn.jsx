@@ -73,7 +73,7 @@ function LogIn() {
             </form>
           </div>
             </form>
-            {loading ? (<p>loading ...</p>):null}
+            {loading ? (<span className="loading loading-dots loading-xs"></span>):null}
         </div>
       </dialog>
     </div>

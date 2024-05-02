@@ -6,8 +6,10 @@ function NewBlog() {
   const authorId = useSelector((state) => state.user.author.id);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handlePost = async () => {
+    setLoading(true)
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/blog/post/",
@@ -21,9 +23,11 @@ function NewBlog() {
       // Reset title and content after successful post
       setTitle("");
       setContent(" Post Successful");
+      setLoading(false)
     } catch (error) {
       console.error("Error posting:", error);
       setContent("missing values")
+      setLoading(false)
     }
   };
 
@@ -48,7 +52,7 @@ function NewBlog() {
           required
         ></textarea>
         <button className="btn btn-primary w-[10rem]" onClick={handlePost}>
-          Post
+          Post {loading?(<span className="loading loading-dots loading-xs"></span>):null}
         </button>
       </div>
     </>

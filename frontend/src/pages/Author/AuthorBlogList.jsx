@@ -29,7 +29,7 @@ function AuthorBlogList() {
   return (
     <>
     {isLoading ?(
-      <p>loading...</p>
+      <span className="ml-[50%] loading loading-dots loading-lg"></span>
     ):(
       <div className="flex flex-wrap mt-16 gap-10 mx-8">
       {posts.map((blog) => (

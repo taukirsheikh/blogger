@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteBlogPost } from "../../services/blogApi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-function AuthorBlogCard({title,content,date,blog_id, setDelet,delet}) {
-    const formatDate = (dateString) => {
-        const date = new Date(dateString);
-        const options = { year: "numeric", month: "long", day: "numeric" };
-        return date.toLocaleDateString("en-US", options);
-    }
-    const handleDelete = async()=>{
-        console.log(blog_id,'bloggg')
-        
-        try{
-            await axios.delete(`http://127.0.0.1:8000/blog/delete-single/${blog_id}/`);
-            setDelet(!delet);
-        }catch (error) {
+function AuthorBlogCard({ title, content, date, blog_id, setDelet, delet }) {
+  const [loading, setLoading] = useState(false);
 
-            console.error("Error deleting blog post:", error);
-          }
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
+  const handleDelete = async () => {
+    setLoading(true);
+    console.log(blog_id, "bloggg");
+
+    try {
+      await axios.delete(
+        `http://127.0.0.1:8000/blog/delete-single/${blog_id}/`
+      );
+      setDelet(!delet);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error deleting blog post:", error);
     }
+  };
   return (
     <>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -29,10 +34,17 @@ function AuthorBlogCard({title,content,date,blog_id, setDelet,delet}) {
           <p>{formatDate(date)}</p>
           <div className="card-actions justify-end">
             <Link to={`${blog_id}`}>
-              <button className="btn btn-primary" >Edit</button>
+              <button className="btn btn-primary">Edit</button>
             </Link>
-              <button className="btn btn-error"onClick={handleDelete}>Delete</button>
-           
+            <button
+              className="btn btn-error"
+              onClick={handleDelete}
+            >
+              Delete
+              {loading ? (
+                <span className="loading loading-dots loading-xs"></span>
+              ) : null}
+            </button>
           </div>
         </div>
       </div>

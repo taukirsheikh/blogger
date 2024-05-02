@@ -3,14 +3,15 @@ import axios from "axios";
 
 function Register() {
   const [state, setState] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      // Send a POST request to the user registration endpoint
       const response = await axios.post(
         "http://127.0.0.1:8000/user/register/",
         {
@@ -25,8 +26,10 @@ function Register() {
       setEmail("");
       setPassword("");
       setState(true);
+      setLoading(false);
     } catch (error) {
       console.error("Error registering user:", error);
+      setLoading(false);
     }
   };
 
@@ -87,6 +90,7 @@ function Register() {
             </button>
           </div>
           {state ? <p>User Registered successfully</p> :null}
+          {loading?<span className="loading loading-dots loading-xs"></span>:null}
         </div>
       </dialog>
     </div>

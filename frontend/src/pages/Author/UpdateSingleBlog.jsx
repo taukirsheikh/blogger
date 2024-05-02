@@ -6,6 +6,8 @@ import axios from "axios";
 function UpdateSingleBlog() {
   const authorId = useSelector((state) => state.user.author.id);
   const [status, setStatus] = useState(false);
+  const [fetch, setfetch] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { blog_id } = useParams(); 
@@ -18,6 +20,7 @@ function UpdateSingleBlog() {
         const { title, content } = response.data;
         setTitle(title);
         setContent(content);
+        setfetch(false)
       } catch (error) {
         console.error("Error fetching blog data:", error);
       }
@@ -27,6 +30,7 @@ function UpdateSingleBlog() {
   }, [blog_id]); 
 
   const handleUpdate = async () => {
+    setLoading(true);
     try {
       const response = await axios.put(
         `http://127.0.0.1:8000/blog/update-single/${blog_id}/`,
@@ -39,10 +43,12 @@ function UpdateSingleBlog() {
 
       console.log("Update successful:", response.data);
       setStatus(true)
+      setLoading(false)
       
      
     } catch (error) {
       console.error("Error updating blog:", error);
+      
     }
   };
   
@@ -68,7 +74,10 @@ function UpdateSingleBlog() {
         <button className="btn btn-primary w-[10rem]" onClick={handleUpdate}>
           Update
         </button>
-        {status?(<p>Update success</p>):null}
+        {status?(<p>Updated Successfully</p>):null}
+        {fetch?(<span className="loading loading-dots loading-xs"></span>):null}
+        {loading?(<span className="loading loading-dots loading-xs"></span>):null}
+        
       </div>
     </>
   );
